@@ -1,129 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.css">
-  <title>Controle de Ordem de Serviço</title>
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168099755-1">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-168099755-1');
+</script>
 </head>
-
 <body>
-  <div class="container">
-    <nav class="sidebar">
-      <div class="logo-container"></div>
-      <ul>
-        <li class="item-menu">
-          <a href="index.html">
-            <span class="icon"><i class="bi bi-layout-text-window-reverse"></i></span>
-            <span class="txt-link">Chamados</span>
-          </a>
-        </li>
-        <li class="item-menu">
-          <a href="CompletedOS.html">
-            <span class="icon"><i class="bi bi-check2-square"></i></span>
-            <span class="txt-link">Chamados Concluídos</span>
-          </a>
-        </li>
-        <li class="item-menu">
-          <a href="OrderDetails.html">
-            <span class="icon"><i class="bi bi-ticket-detailed"></i></span>
-            <span class="txt-link">Detalhes da OS</span>
-          </a>
-        </li>
-        <li class="item-menu">
-          <a href="Reports.html">
-            <span class="icon"><i class="bi bi-file-earmark-spreadsheet-fill"></i></span>
-            <span class="txt-link">Relatórios</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="content">
-      <div id="task-form">
-        <h2>Abrir Nova Ordem de Serviço</h2>
-        <div class="task-form-fields">
-          <div class="task-form-group">
-            <label for="new-task-client">Cliente</label>
-            <input type="text" id="new-task-client" placeholder="Digite o nome do cliente">
-          </div>
-          <div class="task-form-group">
-            <label for="new-task-automation">Automação do Cliente</label>
-            <select id="new-task-automation">
-              <option value="" selected disabled>Selecione</option>
-              <option value="Net Controll">Net Controll</option>
-              <option value="Symac Web">Symac Web</option>
-              <option value="Symac Desktop">Symac Desktop</option>
-              <option value="Clipp">Clipp</option>
-              <option value="Relógio de Ponto">Relógio de Ponto</option>
-              <option value="TEF">TEF</option>
-            </select>
-          </div>
-          <div class="task-form-group">
-            <label for="new-task-description">Descrição</label>
-            <textarea id="new-task-description" placeholder="Digite a descrição da ordem de serviço"></textarea>
-          </div>
-        </div>
-        <div class="task-form-actions">
-          <button id="add-task-button">Adicionar Ordem de Serviço</button>
-        </div>
+    
+    <div class="ripple-background">
+        <div class="circle xxlarge shade1"></div>
+        <div class="circle xlarge shade2"></div>
+        <div class="circle large shade3"></div>
+        <div class="circle mediun shade4"></div>
+        <div class="circle small shade5"></div>
       </div>
-      <div id="task-list">
-        <h2>Ordens de Serviço</h2>
-        <table>
-          <thead>
-            <tr>
-              <th onclick="sortTable(0)">Número do Ticket</th>
-              <th onclick="sortTable(1)">Cliente</th>
-              <th onclick="sortTable(2)">Automação</th>
-              <th onclick="sortTable(3)">Técnico</th>
-              <th onclick="sortTable(4)">Descrição</th>
-              <th onclick="sortTable(5)">Data de Abertura</th>
-              <th onclick="sortTable(6)">Data de Conclusão</th>
-              <th onclick="sortTable(7)">Status</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="task-list-body"></tbody>
-        </table>
-      </div>
-      <div id="task-details-modal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Detalhes da Ordem de Serviço</h2>
-          <div class="task-details">
-            <p><strong>Número do Ticket</strong> <span id="task-details-ticket"></span></p>
-            <p><strong>Cliente:</strong> <span id="task-details-client"></span></p>
-            <p><strong>Automação do Cliente:</strong> <span id="task-details-automation"></span></p>
-            <p><strong>Técnico:</strong> <span id="task-details-technician"></span></p>
-            <p><strong>Descrição:</strong> <span id="task-details-description"></span></p>
-            <p><strong>Data de Abertura:</strong> <span id="task-details-open-date"></span></p>
-            <p><strong>Data de Conclusão:</strong> <span id="task-details-close-date"></span></p>
-            <p><strong>Status:</strong> <span id="task-details-status"></span></p>
-          </div>
-          <div id="comments-section">
-            <h3>Comentários</h3>
-            <ul id="comments-list"></ul>
-            <div id="comment-form">
-              <textarea id="new-comment-text" placeholder="Adicionar comentário"></textarea>
-              <button id="add-comment-button">Adicionar</button>
-            </div>
-          </div>
-          <div class="task-details-actions">
-            <button id="edit-task-button">Editar</button>
-            <button id="close-modal-button">Fechar</button>
-          </div>
+      
+        <div id="frame">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSelVFlqggSWRFRw0ECdE5Z8SUKxwScXQnhhGL7jjSIKaIgfxQ/viewform?embedded=true" width="400" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
-      </div>
-      <footer>
-        <p>&copy; 2023 Controle de Ordem de Serviço</p>
-      </footer>
-    </div>
-  </div>
-
-  <script src="index.js"></script>
+    
 </body>
-
 </html>
