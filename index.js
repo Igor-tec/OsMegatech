@@ -125,51 +125,41 @@ function showOrderDetails(event) {
     // Limpar o campo de texto do novo comentário
     document.getElementById('new-comment-text').value = '';
 
-    // Adicionar o evento para adicionar comentário
+    // Atualizar o atributo 'data-order-id' do botão de adicionar comentário
     const addCommentButton = document.getElementById('add-comment-button');
-    addCommentButton.removeEventListener('click', addComment); // Remover o evento anterior, se existir
-    addCommentButton.addEventListener('click', () => {
-      const newCommentText = document.getElementById('new-comment-text').value.trim();
-      if (newCommentText !== '') {
-        const comment = {
-          technician: order.technician,
-          date: new Date().toLocaleString(),
-          text: newCommentText
-        };
-        order.comments.push(comment);
-        showOrderDetails(event); // Atualizar os detalhes da ordem de serviço para exibir o novo comentário
-      }
-    });
+    addCommentButton.setAttribute('data-order-id', order.id);
 
     // Exibir o modal
     modal.style.display = 'block';
   }
 }
 
-
-
 // Função para adicionar um comentário a uma ordem de serviço
-function addComment(order) {
-  const newCommentText = document.getElementById('new-comment-text').value.trim();
+function addComment(event) {
+  const orderId = parseInt(event.target.getAttribute('data-order-id'));
+  const order = findOrderById(orderId);
 
-  if (newCommentText !== '') {
-    const comment = {
-      text: newCommentText,
-      date: new Date().toLocaleString(),
-      technician: localStorage.getItem('loggedInUser')
-    };
+  if (order) {
+    const newCommentText = document.getElementById('new-comment-text').value.trim();
 
-    order.comments.push(comment);
-    document.getElementById('new-comment-text').value = '';
+    if (newCommentText !== '') {
+      const comment = {
+        text: newCommentText,
+        date: new Date().toLocaleString(),
+        technician: localStorage.getItem('loggedInUser')
+      };
 
-    // Atualizar a exibição dos comentários
-    const commentsList = document.getElementById('comments-list');
-    const commentItem = document.createElement('li');
-    commentItem.textContent = `${comment.technician} - ${comment.date} - ${comment.text}`;
-    commentsList.appendChild(commentItem);
+      order.comments.push(comment);
+      document.getElementById('new-comment-text').value = '';
+
+      // Atualizar a exibição dos comentários
+      const commentsList = document.getElementById('comments-list');
+      const commentItem = document.createElement('li');
+      commentItem.textContent = `${comment.technician} - ${comment.date} - ${comment.text}`;
+      commentsList.appendChild(commentItem);
+    }
   }
 }
-
 
 // Função para fechar o modal
 function closeModal() {
@@ -257,6 +247,10 @@ addTaskButton.addEventListener('click', addOrder);
 
 // Adicionar evento de clique para o botão "Fechar" do modal
 closeBtn.addEventListener('click', closeModal);
+
+// Adicionar evento de clique para o botão "Adicionar Comentário"
+const addCommentButton = document.getElementById('add-comment-button');
+addCommentButton.addEventListener('click', addComment);
 
 // Exibir as ordens de serviço iniciais
 displayOrders();

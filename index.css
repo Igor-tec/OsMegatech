@@ -16,7 +16,7 @@ body {
 }
 
 .sidebar {
-  width: 240px;
+  width: 216px;
   background-color: #048ABF;
   overflow-y: auto;
   margin-top:10px;
@@ -25,10 +25,11 @@ body {
 .logo-container {
   background-image: url("logo.png");
   background-repeat: no-repeat;
-  width: 230px;
-  height: 70px;
+  width: 175px;
+  height: 175px;
   background-color: #048ABF;
   margin-bottom: 20px;
+  margin-left:19px;
 }
 
 ul {
@@ -43,7 +44,7 @@ ul {
 .item-menu a {
   background-color:#fff;
   display: flex;
-  width:230px;
+  width:206px;
   margin-left:5px;
   align-items: center;
   text-decoration: none;
@@ -53,7 +54,8 @@ ul {
 }
 
 .item-menu a:hover {
-  background-color: #d7d7d752;
+  background-color: #c34f4f52;
+  transition:0.4s;
 }
 
 .item-menu .icon {
